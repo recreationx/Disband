@@ -17,6 +17,19 @@ class Basic(commands.Cog):
     async def ping(self, ctx):
         await ctx.send(f"Pong! {round(self.client.latency * 1000)}ms")
 
+    @commands.command()
+    async def avatar(self, ctx, member: discord.Member):
+        if member == None:
+            ctx.send("Member argument missing.")
+        else:
+            show_avatar = discord.Embed(
+                title=f"{member}",
+                description=f"[**Avatar URL**]({member.avatar_url})",
+                color=discord.Color.darker_grey(),
+            )
+            show_avatar.set_image(url=f"{member.avatar_url}")
+            await ctx.send(embed=show_avatar)
+
     @commands.command(aliases=["8ball", "eightball"])
     async def _8ball(self, ctx, *, question):
         responses = [
