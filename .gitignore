@@ -1,2 +1,3 @@
 /.git
-/Disband.code-workspace
+/Disband.code-workspace 
+__pycache__/
